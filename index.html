@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .scrollable-container{
+        width: 520px;
+        height: 60px;
+      }
+
+      .viewer{
+        display: block;
+        width:520px;
+        height:360px;
+      }
+      
+      .viewer img{
+        position: absolute;
+      }
+
+      .scrollable{
+        width:420px;
+        height: 60px;
+        position:relative;
+        overflow: hidden;
+        float: left;
+      }
+      
+      .scrollable-menu{
+        float: left;
+        width: 100px;
+      }
+      
+      .item{
+        float: left;
+        width: 420px;
+      }
+      
+      .item img{
+        margin-left: 5px;
+        border: 2px solid white;
+      }
+
+      .item img:hover, .item img.current{
+        border: 2px solid #D16509;
+      }
+
+      .items{
+        float: left;
+        position:relative;
+        width: 20000em;
+        height: 60px;
+      }
+
+      .fade-in{
+        display: none;
+      }
+
+      .hidden{
+        display: none;
+      }
+  
+    </style>
+    <script type="text/javascript" src="jquery.tools.min.js"></script>
+    <script type="text/javascript">
+      var Site = Site || {};
+
+
+      // Gallery Plugin
+      Site.gallery = function(options){
+        $.extend(true,this,options);
+      };
+      
+      Site.gallery.prototype = { 
+        viewer:     null,
+        scrollable: null,
+        
+        onSeek: function(a,index){
+          this.getItems()
+            .eq(index)
+            .find('img:first')
+            .trigger('click');
+        },
+
+        init: function(){
+          var scrollable = this.scrollable,
+              viewer     = this.viewer;
+
+          scrollable
+            .scrollable({ onSeek: this.scrollableOptions })
+            .find('.item img')
+              .live('click',function(){
+                var element = $(this),
+                  newSrc = element.attr('data-src'),
+                  oldImage = viewer.find('img'),
+                  newImage = $(new Image());
+                
+                scrollable
+                  .find('img')
+                  .removeClass('current');
+
+                element.addClass('current');
+                
+                oldImage.before(newImage);
+                newImage.load(function(){ 
+                  oldImage.fadeOut('fast',function(){
+                    oldImage.remove();
+                  });
+                }).attr('src',newSrc);
+              });
+        },
+
+        run: function(){
+        //fake human mouse click to start it off.
+          this.scrollable
+            .find('.item img')
+            .first()
+            .trigger('click');
+        }
+      };
+
+      // fadein Images once they are loaded.
+      $.fn.imageFadeIn = function(){
+        this.each(function(){
+          var image = $(this),
+              src = image.attr('src');
+
+          image.load(function(){
+            image.fadeIn();
+          }).attr('src',src);
+        });
+      };
+
+      Site.run = function(){
+        $('img.fade-in').imageFadeIn();
+        var gallery = new Site.gallery({
+          viewer: $('.viewer'),
+          scrollable: $('.scrollable'),
+          onSeek: $.noop
+        });
+
+        gallery.init();
+        gallery.run();
+
+      };
+
+      // Once Page is ready, run the site.
+      $(Site.run);
+    </script>
+  </head>
+  <body>
+    <div class="gallery">
+      <div class="viewer">
+        <img class="hidden" src="big.png"/>
+      </div>
+      <div class="scrollable-container">
+        <div class="scrollable">
+          <div class="items">
+            <div class="item">
+              <img class="fade-in" src="thumb.png" data-src="thumb.png"/>
+              <img class="fade-in" src="thumb.png" data-src="big.png"/>
+              <img class="fade-in" src="thumb.png" data-src="thumb.png"/>
+              <img class="fade-in" src="thumb.png" data-src="thumb.png"/>
+              <img class="fade-in" src="thumb.png" data-src="thumb.png"/>
+            </div>
+            <div class="item">
+              <img class="fade-in" src="thumb.png" data-src="thumb.png"/>
+              <img class="fade-in" src="thumb.png" data-src="thumb.png"/>
+              <img class="fade-in" src="thumb.png" data-src="thumb.png"/>
+              <img class="fade-in" src="thumb.png" data-src="thumb.png"/>
+              <img class="fade-in" src="thumb.png" data-src="thumb.png"/>
+            </div>
+            <div class="item">
+              <img class="fade-in" src="thumb.png" data-src="thumb.png"/>
+              <img class="fade-in" src="thumb.png" data-src="thumb.png"/>
+              <img class="fade-in" src="thumb.png" data-src="thumb.png"/>
+              <img class="fade-in" src="thumb.png" data-src="thumb.png"/>
+              <img class="fade-in" src="thumb.png" data-src="thumb.png"/>
+            </div>
+            <div class="item">
+              <img class="fade-in" src="thumb.png" data-src="thumb.png"/>
+              <img class="fade-in" src="thumb.png" data-src="thumb.png"/>
+              <img class="fade-in" src="thumb.png" data-src="thumb.png"/>
+              <img class="fade-in" src="thumb.png" data-src="thumb.png"/>
+              <img class="fade-in" src="thumb.png" data-src="thumb.png"/>
+            </div>
+          </div>
+        </div>
+        <div class="scrollable-menu">
+          <a href="#" class="prev">Prev</a>
+          <a href="#" class="next">Next</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
