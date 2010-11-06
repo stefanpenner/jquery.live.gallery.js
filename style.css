@@ -1,20 +1,20 @@
-.scrollable-container{
+.gallery .scrollable-container{
   width: 520px;
   height: 60px;
 }
 
-.viewer{
+.gallery .viewer{
   display: block;
   width:520px;
   height:360px;
 }
 
-.viewer img{
+.gallery .viewer img{
   position: absolute;
   clip: rect(0px 500px 350px 0px) ;
 }
 
-.scrollable{
+.gallery .scrollable{
   width:420px;
   height: 60px;
   position:relative;
@@ -22,36 +22,38 @@
   float: left;
 }
 
-.scrollable-menu{
+.gallery .scrollable-menu{
   float: left;
   width: 100px;
 }
 
-.item{
+.gallery .item{
   float: left;
   width: 420px;
 }
 
-.item img{
+.gallery .item img{
   margin-left: 5px;
   border: 2px solid white;
 }
 
-.item img:hover, .item img.current{
+.gallery .item img:hover, .item img.current{
   border: 2px solid #D16509;
 }
 
-.items{
+.gallery .items{
   float: left;
   position:relative;
   width: 20000em;
   height: 60px;
 }
 
+/* Fade In Plugin  */
 .fade-in{
   display: none;
 }
 
+/* Global Style */
 .hidden{
   display: none;
 }
