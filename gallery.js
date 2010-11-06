@@ -1,6 +1,5 @@
 var Site = Site || {};
 
-
 (function(Site){
 
   // Gallery Plugin
