@@ -11,6 +11,7 @@
 
 .viewer img{
   position: absolute;
+  clip: rect(0px 500px 350px 0px) ;
 }
 
 .scrollable{
