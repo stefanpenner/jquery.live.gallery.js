@@ -1,0 +1,86 @@
+.scrollable-container {
+	position:relative;
+	width: 460px;
+	height: 55px;
+	padding:10px;
+  margin:15px auto 0px;
+  background: url(../images/thumbbox.jpg) no-repeat;
+}
+.viewer {
+    padding-top:3px;
+    height:357px;
+    overflow: hidden;
+}
+.viewer img {
+	display:block;
+	text-align:center;
+	margin:0 auto;
+}
+.scrollable {
+	width:410px;
+	height: 55px;
+	position:relative;
+	overflow: hidden;
+	float: left;
+	margin-left:23px;
+}
+.scrollable-menu {
+	float: left;
+	width: 100px;
+}
+.scrollable-menu a.prev {
+  position:absolute;
+  top:31px;
+  left:12px;
+  height:75px;
+  width:23px;
+  text-indent:-999em;
+  cursor:pointer;
+  background: url(../images/left-arrow.png) no-repeat;
+}
+.scrollable-menu a.next {
+  position:absolute;
+  top:31px;
+  right:3px;
+  height:75px;
+  width:23px;
+  text-indent:-999em;
+  cursor:pointer;
+  background: url(../images/right-arrow.png) no-repeat;
+}
+.scrollable-menu a.next:active {
+	top:32px;
+}
+.scrollable-menu a.prev:active {
+	top:32px;
+}
+.item {
+  float: left;
+  width: 445px;
+}
+.item img {
+  margin: 0 8px;
+  -moz-box-shadow: 0px 1px 4px #8f7a8a;
+	-webkit-box-shadow: 0px 1px 4px #8f7a8a;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color=#8f7a8a,direction=180,strength=10);
+  box-shadow: 0px 1px 4px #8f7a8a;
+  border: 2px solid #fff;
+  cursor:pointer;
+  opacity:.7;
+}
+.item img:hover, .item img.current {
+  border: 2px solid #fff;
+  opacity:1;
+}
+.items {
+  float: left;
+  position:relative;
+  width: 20000em;
+  height: 75px;
+}
+.fade-in {
+  display: none;
+}
+.hidden {
+  display: none;
+}
