@@ -9,12 +9,20 @@
 .viewer {
     padding-top:3px;
     height:357px;
+    width: 500px;
     overflow: hidden;
+	  margin:0 auto;
 }
 .viewer img {
 	display:block;
 	text-align:center;
-	margin:0 auto;
+  position: absolute;
+  margin: 0 8px;
+  -moz-box-shadow: 0px 1px 4px #8f7a8a;
+	-webkit-box-shadow: 0px 1px 4px #8f7a8a;
+  box-shadow: 0px 1px 4px #8f7a8a;
+  border: 2px solid #fff;
+  cursor:pointer;
 }
 .scrollable {
 	width:410px;
@@ -62,7 +70,6 @@
   margin: 0 8px;
   -moz-box-shadow: 0px 1px 4px #8f7a8a;
 	-webkit-box-shadow: 0px 1px 4px #8f7a8a;
-  filter: progid:DXImageTransform.Microsoft.Shadow(color=#8f7a8a,direction=180,strength=10);
   box-shadow: 0px 1px 4px #8f7a8a;
   border: 2px solid #fff;
   cursor:pointer;

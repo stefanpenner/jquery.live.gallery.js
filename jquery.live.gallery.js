@@ -52,9 +52,9 @@
         find(this.thumbnailSelector).
           live('click',function(){
             var element = $(this),
-              newSrc = element.attr('data-src'),
-              oldImage = viewer.find('img'),
-              newImage = $(new Image());
+              newSrc    = element.attr('data-src'),
+              oldImage  = viewer.find('img'),
+              newImage  = $(new Image());
 
               scrollable.
               find('img').
